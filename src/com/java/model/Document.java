@@ -1,18 +1,18 @@
 package com.java.model;
 
 public abstract class Document {
-    protected int ID;
+    protected long ID;
     protected String producer;
     protected int releaseNumber;
 
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
 
     public abstract double calcualateCost();
 
-    public void setID(int ID) {
+    public void setID(long ID) {
         this.ID = ID;
     }
 
