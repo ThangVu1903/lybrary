@@ -19,6 +19,11 @@ public class Book extends Document{
     public void setPage(int page) {
         this.page = page;
     }
+    @Override
+    public String toString (){
+        return "{ ID: "+ID+" ,producer: "+producer+" ,release: "+releaseNumber
+                +" ,author: "+author+ " ,page: "+page+ " }";
+    }
 
     @Override
     public double calcualateCost() {

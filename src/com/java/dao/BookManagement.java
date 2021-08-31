@@ -7,13 +7,25 @@ import java.util.List;
 
 public class BookManagement {
 
-    private List<Book> books = new ArrayList<>();
+    private List<Book> bookList = new ArrayList<>();
 
-    public List<Book> getBooks() {
-        return books;
+    public List<Book> getBookList() {
+        return bookList;
+    }
+    public void addBook(Book addBook){
+        for (Book book: bookList){
+            if (book.getID()==addBook.getID()){
+                System.out.println("Book already exists, please re-enter");
+                return;
+            }
+        }
+        bookList.add(addBook);
+    }
+    public void removeBook(Book book){
+        bookList.remove(book);
     }
     public void updateBook(Book updatedBook) {
-        for (Book book: books) {
+        for (Book book: bookList) {
             if (book.getID() == updatedBook.getID()) {
                 book.setReleaseNumber(updatedBook.getReleaseNumber());
                 book.setAuthor(updatedBook.getAuthor());
@@ -21,8 +33,8 @@ public class BookManagement {
         }
     }
 
-    public Book searchByID(int ID) {
-        for (Book book: books) {
+    public Book searchBookID(long ID) {
+        for (Book book: bookList) {
             if (book.getID() == ID) {
                 return book;
             }
