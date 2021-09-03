@@ -15,7 +15,7 @@ public class MagazineManagement {
 
     public void addMagazine(Magazine addMagazine){
         for (Magazine magazine: magazineList){
-            if (magazine.getID()==addMagazine.getID()){
+            if (magazine.equals(addMagazine)){
                 System.out.println("Magazine already exists, please re-enter");
                 return;
             }

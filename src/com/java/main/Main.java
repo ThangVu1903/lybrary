@@ -7,9 +7,8 @@ import com.java.model.Book;
 import com.java.model.Magazine;
 import com.java.model.Newspaper;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+
+import java.util.*;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
@@ -32,6 +31,7 @@ public class Main {
                             case 1:
                                 Book book1 = inputBook();
                                 bookManagement.addBook(book1);
+                                System.out.println("add success");
                                 break;
                             case 2:
                                 System.out.println("Enter the book ID to delete");
@@ -73,9 +73,29 @@ public class Main {
                                 }
                                 break;
                             case 6:
-                                showMenuBook();
+                                Collections.sort(bookList, new Book.SortBookAmount());
+                                System.out.println("book list after sort by :");
+                                for (Book book6 : bookList){
+                                    displayBook(book6);
+                                }
+                                if (bookList.size() == 0) {
+                                    System.out.println("No books");
+                                }
                                 break;
                             case 7:
+                                Collections.sort(bookList, new Book.SortBookNumberRelease());
+                                System.out.println("book list after sort by  :");
+                                for (Book book7 : bookList){
+                                    displayBook(book7);
+                                }
+                                if (bookList.size() == 0) {
+                                    System.out.println("No books");
+                                }
+                                break;
+                            case 8:
+                                showMenuBook();
+                                break;
+                            case 9:
                                 showMenu();
                                 break;
                             default:
@@ -131,16 +151,35 @@ public class Main {
                                 }
                                 break;
                             case 6:
-                                showMenuMagazine();
+                                Collections.sort(magazineList, new Magazine.SortMagazineMonth());
+                                System.out.println("The magazine after arranging: ");
+                                for (Magazine magazine6 : magazineList) {
+                                    displayMagazine(magazine6);
+                                }
+                                if (magazineList.size() == 0) {
+                                    System.out.println("No Magazines");
+                                }
                                 break;
                             case 7:
+                                Collections.sort(magazineList, new Magazine.SortMagazineNumberRelease());
+                                System.out.println("The magazine after arranging: ");
+                                for (Magazine magazine7 : magazineList) {
+                                    displayMagazine(magazine7);
+                                }
+                                if (magazineList.size() == 0) {
+                                    System.out.println("No Magazines");
+                                }
+                                break;
+                            case 8:
+                                showMenuMagazine();
+                                break;
+                            case 9:
                                 showMenu();
                                 break;
                             default:
                                 System.out.println("Please select (1-7)");
                         }
                     }
-
                 case "c":
                     showMenuNewspaper();
                     while (true) {
@@ -193,6 +232,16 @@ public class Main {
                                 showMenuNewspaper();
                                 break;
                             case 7:
+                                Collections.sort(newspaperList, new Newspaper.SortNewspaperNumberRelease());
+                                System.out.println("The Newspaper after arranging: ");
+                                for (Newspaper newspaper7 : newspaperList) {
+                                    displayNewspaper(newspaper7);
+                                }
+                                if (newspaperList.size() == 0) {
+                                    System.out.println("No Newspapers");
+                                }
+                                break;
+                            case 8:
                                 showMenu();
                                 break;
                             default:
@@ -221,8 +270,10 @@ public class Main {
         System.out.println("3. update book");
         System.out.println("4. search book");
         System.out.println("5. display all book");
-        System.out.println("6. show menu book");
-        System.out.println("7. back home");
+        System.out.println("6. Arrange the incremental amount");
+        System.out.println("7. Arrange ascending according to release");
+        System.out.println("8. show menu book");
+        System.out.println("9. back home");
     }
     public static void showMenuMagazine(){
         System.out.println("-----------------");
@@ -232,7 +283,10 @@ public class Main {
         System.out.println("3. update magazine");
         System.out.println("4. search magazine");
         System.out.println("5. display all magazine");
-        System.out.println("6. show menu magazine");
+        System.out.println("6. Sort by month release");
+        System.out.println("7. Arrange ascending according to release");
+        System.out.println("8. show menu magazine");
+        System.out.println("9. back home");
     }
     public static void showMenuNewspaper(){
         System.out.println("-----------------");
@@ -243,6 +297,8 @@ public class Main {
         System.out.println("4. search newspaper");
         System.out.println("5. display all newspaper ");
         System.out.println("6. show menu newspaper");
+        System.out.println("7. Arrange ascending according to release");
+        System.out.println("8. back home");
     }
 
     public static Book inputBook(){
