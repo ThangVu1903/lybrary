@@ -14,7 +14,7 @@ public class BookManagement {
     }
     public void addBook(Book addBook){
         for (Book book: bookList){
-            if (book.getID()==addBook.getID()){
+            if (book.equals(addBook)){
                 System.out.println("Book already exists, please re-enter");
                 return;
             }

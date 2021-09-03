@@ -16,7 +16,7 @@ public class NewspaperManagement {
     }
     public void aadNewspaper (Newspaper addNewspaper){
         for (Newspaper newspaper:newspaperList){
-            if (newspaper.getID()==addNewspaper.getID()){
+            if (newspaper.equals(addNewspaper)){
                 System.out.println("Newspaper already exists, please re-enter");
                 return;
             }
